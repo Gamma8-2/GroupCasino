@@ -4,6 +4,6 @@ import com.github.zipcodewilmington.casino.Card;
 import com.github.zipcodewilmington.casino.CardGame;
 import com.github.zipcodewilmington.casino.GameInterface;
 
-public  class WarGame extends CardGame  {
+public  class WarGame {
 
 }
