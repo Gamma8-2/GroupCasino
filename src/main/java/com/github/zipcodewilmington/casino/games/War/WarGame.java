@@ -1,4 +1,9 @@
 package com.github.zipcodewilmington.casino.games.War;
 
-public class WarGame extends CardGame{
+import com.github.zipcodewilmington.casino.Card;
+import com.github.zipcodewilmington.casino.CardGame;
+import com.github.zipcodewilmington.casino.GameInterface;
+
+public  class WarGame extends CardGame  {
+
 }
