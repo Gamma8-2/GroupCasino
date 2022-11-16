@@ -42,5 +42,6 @@ public class CasinoAccount {
     public CasinoAccount(String _name, String _password) {
         this._name = _name;
         this._password = _password;
+        this._balance=100;
     }
 }
