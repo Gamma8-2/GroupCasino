@@ -1,7 +1,7 @@
 package com.github.zipcodewilmington.casino;
 
 public class Card {
-    enum Suits {HEARTS, CLUBS, SPADES, DIAMONDS};
+    public enum Suits {HEARTS, CLUBS, SPADES, DIAMONDS}
 
     Integer cardValue;
     Suits suit;
@@ -11,7 +11,7 @@ public class Card {
         this.suit = suit;
     }
 
-    public Suits getSuit(){
+    public Suits getCardSuit(){
         return suit;
     }
 
