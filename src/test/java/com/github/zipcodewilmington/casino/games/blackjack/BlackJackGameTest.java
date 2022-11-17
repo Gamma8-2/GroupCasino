@@ -46,8 +46,8 @@ public class BlackJackGameTest {
     public void checkHandTotalTest(){
         //this method returns (probably) the sum of two values from an array of enums
         //given
-        Card card1 = new Card(JACK, Card.Suits.DIAMONDS);
-        Card card2 = new Card (FOUR, Card.Suits.CLUBS);
+        Card card1 = new Card(JACK, Card.Suits.DIAMONDS, 11);
+        Card card2 = new Card (FOUR, Card.Suits.CLUBS, 4);
         //when
         ArrayList<Card> currentHand = new ArrayList<>();
         currentHand.add(card1);
@@ -69,8 +69,8 @@ public class BlackJackGameTest {
     @Test
     public void startNewRoundTest(){
         //given
-        Card card1 = new Card(JACK, Card.Suits.DIAMONDS);
-        Card card2 = new Card (FOUR, Card.Suits.CLUBS);
+        Card card1 = new Card(JACK, Card.Suits.DIAMONDS, 11);
+        Card card2 = new Card (FOUR, Card.Suits.CLUBS, 4);
         //when
         ArrayList<Card> newArray = new ArrayList<>();
         newArray.add(card1);
@@ -86,8 +86,8 @@ public class BlackJackGameTest {
     @Test
     public void checkForBlackJackTest(){
         //given
-        Card card1 = new Card(JACK, Card.Suits.DIAMONDS);
-        Card card2 = new Card (FOUR, Card.Suits.CLUBS);
+        Card card1 = new Card(JACK, Card.Suits.DIAMONDS, 11);
+        Card card2 = new Card (FOUR, Card.Suits.CLUBS, 4);
         //when
         ArrayList<Card> newArray = new ArrayList<>();
         newArray.add(card1);
@@ -100,8 +100,9 @@ public class BlackJackGameTest {
     @Test
     public void checkForBlackJackTest1(){
         //given
-        Card card1 = new Card( Card.Suits.SPADES);
-        Card card2 = new Card (11, Card.Suits.HEARTS);
+
+        Card card1 = new Card(TEN, Card.Suits.SPADES, 10);
+        Card card2 = new Card (JACK, Card.Suits.HEARTS, 11);
         //when
         ArrayList<Card> newArray = new ArrayList<>();
         newArray.add(card1);
