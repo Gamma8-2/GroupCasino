@@ -1,7 +1,7 @@
 package com.github.zipcodewilmington.casino.games.War;
 
 import com.github.zipcodewilmington.casino.*;
-import com.github.zipcodewilmington.casino.games.GoFish.CardDefaultEnum;
+import com.github.zipcodewilmington.casino.CardDefaultEnum;
 import com.github.zipcodewilmington.casino.games.GoFish.Hand;
 
 public  class WarGame {

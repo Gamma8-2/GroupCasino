@@ -6,6 +6,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import static com.github.zipcodewilmington.casino.CardDefaultEnum.*;
 import static org.junit.Assert.*;
 
 public class BlackJackGameTest {
@@ -45,8 +46,8 @@ public class BlackJackGameTest {
     public void checkHandTotalTest(){
         //this method returns (probably) the sum of two values from an array of enums
         //given
-        Card card1 = new Card(11, Card.Suits.DIAMONDS);
-        Card card2 = new Card (4, Card.Suits.CLUBS);
+        Card card1 = new Card(JACK, Card.Suits.DIAMONDS);
+        Card card2 = new Card (FOUR, Card.Suits.CLUBS);
         //when
         ArrayList<Card> currentHand = new ArrayList<>();
         currentHand.add(card1);
@@ -68,8 +69,8 @@ public class BlackJackGameTest {
     @Test
     public void startNewRoundTest(){
         //given
-        Card card1 = new Card(11, Card.Suits.DIAMONDS);
-        Card card2 = new Card (4, Card.Suits.CLUBS);
+        Card card1 = new Card(JACK, Card.Suits.DIAMONDS);
+        Card card2 = new Card (FOUR, Card.Suits.CLUBS);
         //when
         ArrayList<Card> newArray = new ArrayList<>();
         newArray.add(card1);
@@ -85,8 +86,8 @@ public class BlackJackGameTest {
     @Test
     public void checkForBlackJackTest(){
         //given
-        Card card1 = new Card(11, Card.Suits.DIAMONDS);
-        Card card2 = new Card (4, Card.Suits.CLUBS);
+        Card card1 = new Card(JACK, Card.Suits.DIAMONDS);
+        Card card2 = new Card (FOUR, Card.Suits.CLUBS);
         //when
         ArrayList<Card> newArray = new ArrayList<>();
         newArray.add(card1);
