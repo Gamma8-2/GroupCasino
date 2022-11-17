@@ -5,10 +5,10 @@ import java.util.Stack;
 
 public class Deck{
 
-    ArrayList<Card> deck;
+    Stack<Card> deck;
 
     public Deck() {
-
+        this.deck = new Stack<Card>();
     }
 
     public void createDeck(){
@@ -17,11 +17,12 @@ public class Deck{
             for(int i = 1; i <= 13; i++){
                 //System.out.println(suit);
                 this.deck.add(new Card(i, suit));
-                //System.out.println("Card added: " + i + " of " + suit);
+                System.out.println("Card added: " + i + " of " + suit);
             }
         }
     }
 
-
-
+    public int getDeckSize(){
+        return this.deck.size();
+    }
 }
