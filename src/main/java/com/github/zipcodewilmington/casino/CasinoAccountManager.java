@@ -11,12 +11,16 @@ import java.util.Map;
  * it is advised that every instruction in this class is logged
  */
 public class CasinoAccountManager {
+
     /**
      * @param accountName     name of account to be returned
      * @param accountPassword password of account to be returned
      * @return `ArcadeAccount` with specified `accountName` and `accountPassword`
      */
-  List<CasinoAccount> lstAccount=new ArrayList<>();
+    List<CasinoAccount> lstAccount=new ArrayList<CasinoAccount>();
+    public List<CasinoAccount> getLstAccount() {
+        return lstAccount;
+    }
     public CasinoAccount getAccount(String accountName, String accountPassword) {
         if(lstAccount.size()>0){
             for(CasinoAccount account:lstAccount){
@@ -55,7 +59,7 @@ public class CasinoAccountManager {
      * @param casinoAccount the arcadeAccount to be added to `this.getArcadeAccountList()`
      */
     public void registerAccount(CasinoAccount casinoAccount) {
-        lstAccount.add(casinoAccount);
+         lstAccount.add(casinoAccount);
 //        String currentMethodName = new Object(){}.getClass().getEnclosingMethod().getName();
 //        String currentClassName = getClass().getName();
 //        String errorMessage = "Method with name [ %s ], defined in class with name [ %s ] has  not yet been implemented";

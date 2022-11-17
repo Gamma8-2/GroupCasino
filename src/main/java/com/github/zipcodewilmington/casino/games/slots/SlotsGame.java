@@ -4,6 +4,7 @@ import com.github.zipcodewilmington.casino.GameInterface;
 import com.github.zipcodewilmington.casino.PlayerInterface;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Created by leon on 7/21/2020.
@@ -12,7 +13,7 @@ public class SlotsGame implements GameInterface {
     int[][] _slotMatrix = new int[3][3];
     @Override
     public void add(PlayerInterface player) {
-
+     //player.getArcadeAccount();
     }
 
     @Override
@@ -24,13 +25,19 @@ public class SlotsGame implements GameInterface {
     public void generateMatrix() {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                _slotMatrix[i][j] = (int) Math.random() * 6 + 1;
+                _slotMatrix[i][j] = (int) (Math.random() * 6 + 1);
             }
         }
+
+    }
+    public void printMatrix(){
+        for (int[] row : _slotMatrix)
+            System.out.println(Arrays.toString(row));
     }
 
     @Override
     public void run() {
+        generateMatrix();
         StringBuilder sbRow = new StringBuilder();
         StringBuilder sbCol = new StringBuilder();
         StringBuilder sbDiag1 = new StringBuilder();
@@ -56,12 +63,14 @@ public class SlotsGame implements GameInterface {
         al.add(sbDiag1.toString());
         al.add(sbDiag2.toString());
 
-        for (String str : al) {
+        printMatrix();
+        int result=0;
+        for (String str : al)
             if (str.equals("111") || str.equals("222") || str.equals("333") || str.equals("444") || str.equals("555") || str.equals("666"))
-              //  Update balance;
-                System.out.println("uodatre balance");
+               result=1;
+        if(result==1) System.out.println("Congratulations you won the Game!");
+              else System.out.println("Sorry better luck next time,Do you want to continue!" );
 
-        }
     }
 
 }

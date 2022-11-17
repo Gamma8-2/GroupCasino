@@ -6,13 +6,14 @@ package com.github.zipcodewilmington.casino;
  * The `ArcadeAccount` is used to log into the system to select a `Game` to play.
  */
 public class CasinoAccount {
+    //Fields
     private String _name;
     private String _password;
     private int _balance;
+    //Getters and Setters
     public String get_name() {
         return _name;
     }
-
     public void set_name(String _name) {
         this._name = _name;
     }
@@ -32,15 +33,17 @@ public class CasinoAccount {
     public void set_balance(int _balance) {
         this._balance = _balance;
     }
-
+//Constructor with balance
     public CasinoAccount(String _name, String _password, int _balance) {
         this._name = _name;
         this._password = _password;
         this._balance = _balance;
     }
-
+//Constructor for creating casino account
     public CasinoAccount(String _name, String _password) {
         this._name = _name;
         this._password = _password;
+        this._balance=100;
     }
+
 }

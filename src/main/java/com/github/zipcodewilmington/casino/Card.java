@@ -13,6 +13,7 @@ public class Card {
 
     public enum Suits {HEARTS, CLUBS, SPADES, DIAMONDS};
 
+
     Integer cardValue;
     Suits suit;
 
@@ -22,7 +23,7 @@ public class Card {
         this.cardDefaultEnum = cardDefaultEnum;
     }
 
-    public Suits getSuit(){
+    public Suits getCardSuit(){
         return suit;
     }
 
