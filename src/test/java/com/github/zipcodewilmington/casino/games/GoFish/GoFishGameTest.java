@@ -1,5 +1,6 @@
 package com.github.zipcodewilmington.casino.games.GoFish;
 
+import com.github.zipcodewilmington.casino.CardDefaultEnum;
 import com.github.zipcodewilmington.casino.games.War.PlayerList;
 import org.junit.Assert;
 import org.junit.Test;
@@ -14,13 +15,14 @@ public class GoFishGameTest {
    public void populateGoFishHandTest() {
        //Given
        GoFishGame goFish = new GoFishGame();
+        CardDefaultEnum cardDefaultEnum =  CardDefaultEnum.FIVE;
        //When
        goFish.populateGoFishHand();
        //Then
        int actualPlayer1Handsize= goFish.goFishHandPlayer1.hand.size();
        int actualPlayer2Handsize= goFish.goFishHandPlayer2.hand.size();
-       Assert.assertEquals(7,actualPlayer1Handsize);
-        Assert.assertEquals(7,actualPlayer2Handsize);
+       Assert.assertEquals(cardDefaultEnum,actualPlayer1Handsize);
+        Assert.assertEquals(cardDefaultEnum,actualPlayer2Handsize);
 
 
     }

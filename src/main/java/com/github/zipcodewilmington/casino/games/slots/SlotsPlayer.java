@@ -49,7 +49,6 @@ public class SlotsPlayer implements PlayerInterface {
        this._slotPlayerName=objSlotPlayer.get_name();
         this._slotPlayerPassword=objSlotPlayer.get_password();
         this._slotPlayerBalance=objSlotPlayer.get_balance();
-        run();
     }
 
 
@@ -66,15 +65,6 @@ public class SlotsPlayer implements PlayerInterface {
     public <SomeReturnType> SomeReturnType play() {
         return null;
     }
-    public void run() {
-      //  SlotsGame objSlotGame=new SlotsGame();
 
-//    int balance=50;
-//        String userInput=console.getStringInput("Would you like to play Slots! Y ? N?");
-//
-//        if(userInput=="Y") objSlotGame.run();
-//        if(winAmount!=0) System.out.println("Hey You won "+winAmount+" !");
-//        else System.out.println("Better luck next time");
-    }
 
 }
