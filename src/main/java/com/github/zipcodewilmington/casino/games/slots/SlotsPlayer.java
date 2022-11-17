@@ -41,7 +41,6 @@ public class SlotsPlayer implements PlayerInterface {
 
     private int _slotPlayerBalance;
 
-//    private int winAmount=0;
     private final IOConsole console = new IOConsole(AnsiColor.GREEN);
 
     public SlotsPlayer() {
