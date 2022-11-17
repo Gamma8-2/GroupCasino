@@ -10,10 +10,14 @@ import java.util.Arrays;
  * Created by leon on 7/21/2020.
  */
 public class SlotsGame implements GameInterface {
+    private SlotsPlayer _slotPlayer;
     int[][] _slotMatrix = new int[3][3];
+    public void addPlayer(SlotsPlayer player){
+
+    }
     @Override
     public void add(PlayerInterface player) {
-     //player.getArcadeAccount();
+    _slotPlayer= (SlotsPlayer) player;
     }
 
     @Override
@@ -37,6 +41,8 @@ public class SlotsGame implements GameInterface {
 
     @Override
     public void run() {
+        int balance= _slotPlayer.get_slotPlayerBalance();
+        _slotPlayer.set_slotPlayerBalance(balance-1);
         generateMatrix();
         StringBuilder sbRow = new StringBuilder();
         StringBuilder sbCol = new StringBuilder();
@@ -68,8 +74,11 @@ public class SlotsGame implements GameInterface {
         for (String str : al)
             if (str.equals("111") || str.equals("222") || str.equals("333") || str.equals("444") || str.equals("555") || str.equals("666"))
                result=1;
-        if(result==1) System.out.println("Congratulations you won the Game!");
-              else System.out.println("Sorry better luck next time,Do you want to continue!" );
+        if(result==1) {
+            int total= _slotPlayer.get_slotPlayerBalance();
+            _slotPlayer.set_slotPlayerBalance(balance+10);
+            System.out.println("Congratulations you won the Game!"+_slotPlayer.get_slotPlayerName()+"and you have balance of"+_slotPlayer.get_slotPlayerBalance() );
+        }  else System.out.println("Sorry better luck next time!" +_slotPlayer.get_slotPlayerName() +"and you have balance of"+_slotPlayer.get_slotPlayerBalance() );
 
     }
 
