@@ -1,6 +1,7 @@
 package com.github.zipcodewilmington.casino.games.slots;
 
 import com.github.zipcodewilmington.casino.CasinoAccount;
+import com.github.zipcodewilmington.casino.CasinoAccountManager;
 import com.github.zipcodewilmington.casino.GameInterface;
 import com.github.zipcodewilmington.casino.PlayerInterface;
 
@@ -13,6 +14,9 @@ public class SlotsPlayer implements PlayerInterface {
 
     @Override
     public CasinoAccount getArcadeAccount() {
+        //CasinoAccountManager objmgr=new CasinoAccountManager();
+        //CasinoAccount ObjCasinoAccount=objmgr.getAccount(name,password);
+
         return null;
     }
 
@@ -25,13 +29,9 @@ public class SlotsPlayer implements PlayerInterface {
         System.out.println("Would you like to play Slots! Y ? N?");
         String userInput=System.console().readLine();
 
-        if(userInput=="Y"){
-            objSlotGame.generateMatrix();
-            objSlotGame.run();
-        }
+        if(userInput=="Y") objSlotGame.run();
         if(winAmount!=0) System.out.println("Hey You won "+winAmount+" !");
         else System.out.println("Better luck next time");
     }
-
 
 }
