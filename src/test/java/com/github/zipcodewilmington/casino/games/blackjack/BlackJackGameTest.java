@@ -20,27 +20,27 @@ public class BlackJackGameTest {
     //+startNewRound()
     //+checkforBlackjack()
 
-    @Test
-    public void BlackJackConstructorTest(){
-        //given
-        CasinoAccountManager manager = new CasinoAccountManager();
-        ArrayList<CasinoAccount> playersAtTable = new ArrayList<>();
-        playersAtTable.add(manager.createAccount("Troy", "password"));
-        playersAtTable.add(manager.createAccount("Dealer", "pass"));
-
-        String actual = "";
-        for(int i = 0; i < playersAtTable.size(); i++){
-            System.out.println(playersAtTable.get(i).get_name());
-            actual = actual + playersAtTable.get(i).get_name() + " ";
-        }
-        String expected = "Troy";
-        System.out.println(actual);
-
-        //when
-        BlackJackGame testGame = new BlackJackGame();
-        //then
-
-    }
+//    @Test
+//    public void BlackJackConstructorTest(){
+//        //given
+//        CasinoAccountManager manager = new CasinoAccountManager();
+//        ArrayList<CasinoAccount> playersAtTable = new ArrayList<>();
+//        playersAtTable.add(manager.createAccount("Troy", "password"));
+//        playersAtTable.add(manager.createAccount("Dealer", "pass"));
+//
+//        String actual = "";
+//        for(int i = 0; i < playersAtTable.size(); i++){
+//            System.out.println(playersAtTable.get(i).get_name());
+//            actual = actual + playersAtTable.get(i).get_name() + " ";
+//        }
+//        String expected = "Troy";
+//        System.out.println(actual);
+//
+//        //when
+//        BlackJackGame testGame = new BlackJackGame();
+//        //then
+//
+//    }
 
     @Test
     public void checkHandTotalTest(){
@@ -97,4 +97,27 @@ public class BlackJackGameTest {
         boolean actual = game.checkForBlackJack(newArray);
         assertFalse(actual);
     }
+    @Test
+    public void checkForBlackJackTest1(){
+        //given
+        Card card1 = new Card(10, Card.Suits.SPADES);
+        Card card2 = new Card (11, Card.Suits.HEARTS);
+        //when
+        ArrayList<Card> newArray = new ArrayList<>();
+        newArray.add(card1);
+        newArray.add(card2);
+        //then
+        int valueOfCards = game.checkHandTotal(newArray);
+        boolean actual = game.checkForBlackJack(newArray);
+        assertTrue(actual);
+    }
+//    @Test
+//    public void checkForWinnerTest(){
+//        //given
+//        BlackJackPlayer player1 = new BlackJackPlayer();
+//        player1.getHand();
+//        //when
+//
+//        //then
+//    }
 }
