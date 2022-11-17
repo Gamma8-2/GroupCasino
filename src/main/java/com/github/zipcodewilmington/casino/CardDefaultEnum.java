@@ -1,4 +1,4 @@
-package com.github.zipcodewilmington.casino.games.GoFish;
+package com.github.zipcodewilmington.casino;
 
 public enum CardDefaultEnum {
     TWO(2),

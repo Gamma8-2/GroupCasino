@@ -1,8 +1,5 @@
 package com.github.zipcodewilmington.casino;
 
-import com.github.zipcodewilmington.casino.games.GoFish.CardDefaultEnum;
-
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Stack;
 
@@ -17,16 +14,18 @@ public class Deck{
     public void createDeck(){
         //ArrayList<Card> deck = new ArrayList<>();
         for(Card.Suits suit : Card.Suits.values()){
-            for(int i = 1; i <= 13; i++){
+            for(CardDefaultEnum rank: CardDefaultEnum.values()){
                 //System.out.println(suit);
-                this.deck.add(new Card(i, suit));
-                System.out.println("Card added: " + i + " of " + suit);
+                this.deck.add(new Card(rank, suit));
+                System.out.println("Card added: " + rank + " of " + suit);
             }
         }
     }
 
 
-    public Deck(Integer value, Suits suits,CardDefaultEnum cardDefaultEnum) {super(value, suits,cardDefaultEnum);}
+    public Deck(Integer value, Card.Suits suits, CardDefaultEnum cardDefaultEnum) {
+        super();
+    }
 
 
 
@@ -36,10 +35,14 @@ public class Deck{
             CardDefaultEnum value = CardDefaultEnum.values()[i];
 
             for (int j = 0; j < 4; j++) {
-                Card card = new Card(value, Suits.values()[j]);
+                Card card = new Card(value, Card.Suits.values()[j]);
                 deck.push(card);
             }
         }
         Collections.shuffle(deck);
+    }
+
+    public int getDeckSize() {
+        return this.deck.size();
     }
 }

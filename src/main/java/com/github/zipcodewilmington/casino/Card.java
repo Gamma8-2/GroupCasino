@@ -1,23 +1,24 @@
 package com.github.zipcodewilmington.casino;
 
-import com.github.zipcodewilmington.casino.games.GoFish.CardDefaultEnum;
-
 public class Card {
 
    //added for cardDefaultEnum
     private CardDefaultEnum cardDefaultEnum;
 
+    Integer cardValue;
+    Suits suit;
+
     public Card(CardDefaultEnum value, Suits value1) {
-        this.cardDefaultEnum =value;
+        this.cardDefaultEnum = value;
+        this.suit = value1;
     }
 
     public enum Suits {HEARTS, CLUBS, SPADES, DIAMONDS};
 
 
-    Integer cardValue;
-    Suits suit;
 
-    public Card (Integer value, Suits suit,CardDefaultEnum cardDefaultEnum){ //added for Hand class
+
+    public Card (CardDefaultEnum cardDefaultEnum,  Suits suit, Integer value){ //added for Hand class
         this.cardValue = value;
         this.suit = suit;
         this.cardDefaultEnum = cardDefaultEnum;
