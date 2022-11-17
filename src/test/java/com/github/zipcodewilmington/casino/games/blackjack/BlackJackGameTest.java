@@ -100,7 +100,7 @@ public class BlackJackGameTest {
     @Test
     public void checkForBlackJackTest1(){
         //given
-        Card card1 = new Card(10, Card.Suits.SPADES);
+        Card card1 = new Card( Card.Suits.SPADES);
         Card card2 = new Card (11, Card.Suits.HEARTS);
         //when
         ArrayList<Card> newArray = new ArrayList<>();
