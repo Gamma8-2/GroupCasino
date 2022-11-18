@@ -26,11 +26,4 @@ class SlotsPlayerTest {
 
     }
 
-    @Test
-    void play() {
-    }
-
-    @Test
-    void run() {
-    }
 }
