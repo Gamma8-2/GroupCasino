@@ -14,6 +14,13 @@ public class RoulettePlayer implements PlayerInterface {
 
     private int _roulettePlayerBalance;
 
+    public RoulettePlayer(){
+        CasinoAccount objRoulettePlayer = getArcadeAccount();
+        this._roulettePlayerName = objRoulettePlayer.get_name();
+        this._roulettePlayerPassword = objRoulettePlayer.get_password();
+        this._roulettePlayerBalance = objRoulettePlayer.get_balance();
+    }
+
     public String get_roulettePlayerName(){
         return _roulettePlayerName;
     }
@@ -39,12 +46,6 @@ public class RoulettePlayer implements PlayerInterface {
     }
     private final IOConsole console = new IOConsole(AnsiColor.BLUE);
 
-    public RoulettePlayer(){
-        CasinoAccount objRoulettePlayer = getArcadeAccount();
-        this._roulettePlayerName = objRoulettePlayer.get_name();
-        this._roulettePlayerPassword = objRoulettePlayer.get_password();
-        this._roulettePlayerBalance = objRoulettePlayer.get_balance();
-    }
 
     @Override
     public CasinoAccount getArcadeAccount() {

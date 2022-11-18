@@ -136,7 +136,7 @@ public class RouletteGame extends RandomGame {
                 "1. Odds (2-to-1 payout)\n" +
                 "2. Evens (2-to-1 payout)\n" +
                 "3. Number (10-to-1 payout)");
-        int menuChoice = scanner.nextInt(); //TODO EXCEPTION HANDLE BEFORE SENDING TO SPINWHEEL MESSAGE
+        int menuChoice = scanner.nextInt(); //TODO EXCEPTION HANDLE BEFORE SENDING TO SPIN WHEEL MESSAGE
         if (menuChoice > 3 || menuChoice < 1) {
             System.out.println("Please enter a valid choice");
             getMenuChoice();

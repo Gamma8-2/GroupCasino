@@ -22,4 +22,14 @@ public class RouletteGameTest {
         boolean actual = test.playAgain(testChoice);
         Assert.assertTrue(actual);
     }
+
+//    @Test
+//    public void updateCurrentBalance(){
+//        RouletteGame test = new RouletteGame();
+//        int balance = 100;
+//        test.updateBalance(150);
+//
+//        int expected = 150;
+//
+//    }
 }
