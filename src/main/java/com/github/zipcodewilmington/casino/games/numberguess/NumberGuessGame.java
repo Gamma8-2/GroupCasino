@@ -43,7 +43,7 @@ public class NumberGuessGame implements GameInterface {
             count++;
 
             gameStatus = guessNumberEngine(guess, mysteryNum, count);
-            
+
 
         }while(!gameStatus);
         }

@@ -51,8 +51,9 @@ public class NumberGuessPlayer implements PlayerInterface {
         String name=console.getStringInput("Helloo NumberGuess player!Play for fun. Please enter your name ");
         String password=console.getStringInput("Please enter your password ");
         CasinoAccountManager objmgr=new CasinoAccountManager();
-        CasinoAccount ObjCasinoAccount=new CasinoAccount(name,password);
-        return ObjCasinoAccount;
+        CasinoAccount objNumberPlayer = objmgr.getAccount(name,password);
+       // CasinoAccount ObjCasinoAccount=new CasinoAccount(name,password);
+        return objNumberPlayer;
     }
 
     @Override
