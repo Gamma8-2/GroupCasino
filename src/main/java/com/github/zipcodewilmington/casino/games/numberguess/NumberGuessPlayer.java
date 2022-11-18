@@ -40,15 +40,15 @@ public class NumberGuessPlayer implements PlayerInterface {
     }
 
     public NumberGuessPlayer() {
-        CasinoAccount objSlotPlayer=getArcadeAccount();
-        this._numGuessPlayerName=objSlotPlayer.get_name();
-        this._numGuessPlayerPassword=objSlotPlayer.get_password();
-        this._numGuessPlayerBalance=objSlotPlayer.get_balance();
+        CasinoAccount objNumberGuessPlayer=getArcadeAccount();
+        this._numGuessPlayerName=objNumberGuessPlayer.get_name();
+        this._numGuessPlayerPassword=objNumberGuessPlayer.get_password();
+        this._numGuessPlayerBalance=objNumberGuessPlayer.get_balance();
     }
 
     @Override
     public CasinoAccount getArcadeAccount() {
-        String name=console.getStringInput("Helloo NumberGuess player!Play for fun. Please enter your name ");
+        String name=console.getStringInput("Hello NumberGuess player! It Costs $1 to play Each attempt for NumberGuessGame. Please enter your name ");
         String password=console.getStringInput("Please enter your password ");
         CasinoAccountManager objmgr=new CasinoAccountManager();
         CasinoAccount objNumberPlayer = objmgr.getAccount(name,password);
