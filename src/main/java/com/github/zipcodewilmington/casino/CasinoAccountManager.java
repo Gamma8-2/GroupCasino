@@ -17,7 +17,7 @@ public class CasinoAccountManager {
      * @param accountPassword password of account to be returned
      * @return `ArcadeAccount` with specified `accountName` and `accountPassword`
      */
-    List<CasinoAccount> lstAccount=new ArrayList<CasinoAccount>();
+    public static List<CasinoAccount> lstAccount=new ArrayList<CasinoAccount>();
     public List<CasinoAccount> getLstAccount() {
         return lstAccount;
     }
