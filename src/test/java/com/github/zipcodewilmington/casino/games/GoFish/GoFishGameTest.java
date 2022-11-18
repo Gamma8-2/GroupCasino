@@ -1,43 +1,32 @@
 package com.github.zipcodewilmington.casino.games.GoFish;
 
-import com.github.zipcodewilmington.casino.CardDefaultEnum;
-import com.github.zipcodewilmington.casino.games.War.PlayerList;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-//public class GoFishGameTest {
+class GoFishGameTest {
 
-  //  @Test
-  // public void populateGoFishHandTest() {
-       //Given
-      // GoFishGame goFish = new GoFishGame();
-      //  CardDefaultEnum cardDefaultEnum =  CardDefaultEnum.FIVE;
-       //When
-       //goFish.populateGoFishHand();
-       //Then
-      // int actualPlayer1Handsize= goFish.goFishHandPlayer1.hand.size();
-     //  int actualPlayer2Handsize= goFish.goFishHandPlayer2.hand.size();
-     //  Assert.assertEquals(cardDefaultEnum,actualPlayer1Handsize);
-     //   Assert.assertEquals(cardDefaultEnum,actualPlayer2Handsize);
+    @Test
+    void add() {
+    }
 
+    @Test
+    void remove() {
+    }
 
-  //  }
-  //  @Test
-  // public void populatePlayersAndListTest() {
-       //Given
-    //  GoFishGame goFish = new GoFishGame();
+    @Test
+    void run() {
+    }
 
-       //When
-     //  goFish.populateGoFishHand();
-      // goFish.populatePlayersAndList(goFish.goFishHandPlayer1,goFish.goFishHandPlayer2);
+    @Test
+    void populateGoFishHand() {
+    }
 
-       //Then
-    //   int actualGoFishPlayerListSize=GoFishPlayer.PlayersList.size();
+    @Test
+    void populatePlayersAndList() {
+    }
 
-        //   Assert.assertEquals(2,actualGoFishPlayerListSize);
-  // }
-//}
+    @Test
+    void findDuplicateCardsForEachPlayer() {
+    }
+}
