@@ -12,6 +12,7 @@ import com.github.zipcodewilmington.utils.IOConsole;
  */
 public class SlotsPlayer implements PlayerInterface {
 //    CasinoAccount objSlotPlayer;
+//CasinoAccount objSlotPlayer;
     private String _slotPlayerName;
     private String _slotPlayerPassword;
 
@@ -56,8 +57,9 @@ public class SlotsPlayer implements PlayerInterface {
         String name=console.getStringInput("Helloo Slot player!It cost 1$ for each round. Please enter your name ");
         String password=console.getStringInput("Please enter your password ");
         CasinoAccountManager objmgr=new CasinoAccountManager();
-        CasinoAccount ObjCasinoAccount=new CasinoAccount(name,password);
-        return ObjCasinoAccount;
+       CasinoAccount objSlotPlayer=objmgr.getAccount(name,password);
+      //  CasinoAccount objSlotPlayer=new CasinoAccount(name,password);
+        return objSlotPlayer;
     }
 
     @Override
