@@ -43,28 +43,8 @@ public class NumberGuessGame implements GameInterface {
             count++;
 
             gameStatus = guessNumberEngine(guess, mysteryNum, count);
+            
 
-            /*
-            if (guess == mysteryNum)
-                System.out.println("Congratulations your find the mystery number in " + count + " attempts");
-            else if (guess > mysteryNum) {
-                System.out.println("your guess is bigger than mystery number");
-                count++;
-                    if (count > 4) {
-                        System.out.println("you exceeded the number of attempts");
-                      }
-            } else {
-                System.out.println("your guess is less than mystery number");
-                count++;
-                 if (count > 4) {
-                    System.out.println("you exceeded the number of attempts");
-                  }
-            }
-
-             */
-
-
-      //  }while(mysteryNum!=guess && count <= 4);
         }while(!gameStatus);
         }
 
