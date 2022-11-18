@@ -18,6 +18,7 @@ public class NumberGuessGame implements GameInterface {
     private NumberGuessPlayer _numberGuessPlayer;
     int count = 1;
     Integer guess;
+
     //Creating a mystery number
     Random random = new Random();
     Integer mysteryNum = random.nextInt(100) + 1;
@@ -27,6 +28,8 @@ public class NumberGuessGame implements GameInterface {
         _numberGuessPlayer= (NumberGuessPlayer) player;
     }
 
+
+
     @Override
     public void remove(PlayerInterface player) {
 
@@ -34,20 +37,63 @@ public class NumberGuessGame implements GameInterface {
 
     @Override
     public void run() {
-
+        boolean gameStatus = false;
         do{
-            guess = console.getIntegerInput("Please select a number to guess mystery number between 1 and 100");
+            guess = console.getIntegerInput("Please select a number to guess mystery number between 1 and 100 in 4 attempts");
+            count++;
+
+            gameStatus = guessNumberEngine(guess, mysteryNum, count);
+
+            /*
             if (guess == mysteryNum)
                 System.out.println("Congratulations your find the mystery number in " + count + " attempts");
             else if (guess > mysteryNum) {
                 System.out.println("your guess is bigger than mystery number");
                 count++;
+                    if (count > 4) {
+                        System.out.println("you exceeded the number of attempts");
+                      }
             } else {
                 System.out.println("your guess is less than mystery number");
                 count++;
+                 if (count > 4) {
+                    System.out.println("you exceeded the number of attempts");
+                  }
             }
-        }while(mysteryNum!=guess);
+
+             */
+
+
+      //  }while(mysteryNum!=guess && count <= 4);
+        }while(!gameStatus);
+        }
+
+    public boolean guessNumberEngine(Integer guessFromUser, Integer systemNum, int numAttempts) {
+
+
+        if (guessFromUser == systemNum) {
+            System.out.println("Congratulations your find the mystery number in " + numAttempts + " attempts");
+            return true;
+        }
+
+        else if (guessFromUser > systemNum) {
+            System.out.println("your guess is bigger than mystery number");
+            //numAttempts++;
+                    if (numAttempts > 4) {
+                        System.out.println("you exceeded the number of attempts");
+                        return true;
+                    }
+            return false;
+        } else {
+            System.out.println("your guess is less than mystery number");
+            //numAttempts++;
+                    if (numAttempts > 4) {
+                        System.out.println("you exceeded the number of attempts");
+                        return true;
+                    }
+            return false;
         }
 
 
+    }
 }
