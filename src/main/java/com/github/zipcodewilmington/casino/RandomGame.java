@@ -1,8 +1,10 @@
 package com.github.zipcodewilmington.casino;
 
 import java.util.Random;
+import java.util.Scanner;
 
 public class RandomGame implements GamblingGame{
+
     @Override
     public void placeBet() {
 

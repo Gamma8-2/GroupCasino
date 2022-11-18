@@ -39,13 +39,21 @@ public class RoulettePlayer implements PlayerInterface {
     }
     private final IOConsole console = new IOConsole(AnsiColor.BLUE);
 
+    public RoulettePlayer(){
+        CasinoAccount objRoulettePlayer = getArcadeAccount();
+        this._roulettePlayerName = objRoulettePlayer.get_name();
+        this._roulettePlayerPassword = objRoulettePlayer.get_password();
+        this._roulettePlayerBalance = objRoulettePlayer.get_balance();
+    }
+
     @Override
     public CasinoAccount getArcadeAccount() {
         String name=console.getStringInput("Welcome to the Roulette table! Minimum $1 to bet. Please enter your name: ");
         String password=console.getStringInput("Please enter your password ");
         CasinoAccountManager objmgr=new CasinoAccountManager();
-        CasinoAccount ObjCasinoAccount=new CasinoAccount(name,password);
-        return ObjCasinoAccount;
+        CasinoAccount objRoulettePlayer = objmgr.getAccount(name, password);
+        //CasinoAccount ObjCasinoAccount=new CasinoAccount(name,password);
+        return objRoulettePlayer;
     }
 
     @Override

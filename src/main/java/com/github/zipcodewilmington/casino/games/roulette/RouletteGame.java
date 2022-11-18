@@ -33,7 +33,10 @@ public class RouletteGame extends RandomGame {
 
             spinWheel(menuChoice, balance);
 
-            boolean playAgainChoice = playAgain();
+            System.out.println("Play again? (y/n)");
+            String playAgainPlayerInput = scanner.nextLine();
+            String lowerCasePlayAgainInput = playAgainPlayerInput.toLowerCase();
+            boolean playAgainChoice = playAgain(lowerCasePlayAgainInput);
             if(playAgainChoice){
                 System.out.println("Thank you for playing!");
                 gameRun = false;
@@ -45,6 +48,7 @@ public class RouletteGame extends RandomGame {
     public void spinWheel(int menuChoice, int balance){
         Scanner scanner = new Scanner(System.in);
         int tableNumber = getRandomNumber(37);
+        System.out.println("Your current balance is: " + balance);
 
         System.out.println("How much would you like to bet?");
         int playerBet = scanner.nextInt();
@@ -60,9 +64,13 @@ public class RouletteGame extends RandomGame {
                 playerBet *= 2;
                 balance += playerBet;
                 System.out.println("You win! A payout of: " + playerBet);
+                updateBalance(balance);
+                displayCurrentBalance(balance);
             }
             else{
                 System.out.println("An even number. You lose :(");
+                updateBalance(balance);
+                displayCurrentBalance(balance);
             }
         }
 
@@ -75,9 +83,13 @@ public class RouletteGame extends RandomGame {
                 playerBet *= 2;
                 balance += playerBet;
                 System.out.println("You win! A payout of: " + playerBet);
+                updateBalance(balance);
+                displayCurrentBalance(balance);
             }
             else{
                 System.out.println("An odd number. You lose :(");
+                updateBalance(balance);
+                displayCurrentBalance(balance);
             }
         }
 
@@ -92,24 +104,25 @@ public class RouletteGame extends RandomGame {
                 playerBet *= 10;
                 balance += playerBet;
                 System.out.println("You win! A payout of: " + playerBet);
+                updateBalance(balance);
+                displayCurrentBalance(balance);
             }
             else{
                 System.out.println("It didn't land on your number. You lose :(");
+                updateBalance(balance);
+                displayCurrentBalance(balance);
             }
 
 
         }
     }
 
-    public boolean playAgain(){
-        Scanner scanner = new Scanner(System.in);
+    public boolean playAgain(String playAgainChoice){
 
-        System.out.println("Play again? (y/n)");
-        String playAgainChoice = scanner.nextLine();
 
         if(!playAgainChoice.toLowerCase().equals("y") && !playAgainChoice.toLowerCase().equals("n")){
             System.out.println("Please make a valid choice");
-            playAgain();
+            playAgain(playAgainChoice);
         }
         if(playAgainChoice.equals("y")){
             return false;
@@ -129,5 +142,13 @@ public class RouletteGame extends RandomGame {
             getMenuChoice();
         }
         return menuChoice;
+    }
+
+    public void updateBalance(int balance){;
+        _roulettePlayer.set_roulettePlayerBalance(balance);
+    }
+
+    public void displayCurrentBalance(int balance){
+        System.out.println("Your current balance is: " + balance);
     }
 }
