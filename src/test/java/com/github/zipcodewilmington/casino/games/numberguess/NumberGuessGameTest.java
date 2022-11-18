@@ -3,6 +3,7 @@ package com.github.zipcodewilmington.casino.games.numberguess;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class NumberGuessGameTest {
@@ -42,6 +43,14 @@ class NumberGuessGameTest {
         boolean actual = obj.guessNumberEngine(23,56,5);
         boolean expected = true;
         Assert.assertEquals(actual,expected);
+    }
+    @Test
+    public void randNumTest() {
+
+        int expected = 100;
+       int actual = (int) (100 * Math.random());
+
+        Assert.assertTrue(actual >=0 && actual <= 99);
     }
 
 }
