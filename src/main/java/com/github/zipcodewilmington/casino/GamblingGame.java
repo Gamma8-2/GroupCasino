@@ -1,6 +1,6 @@
 package com.github.zipcodewilmington.casino;
 
-public interface GamblingGame {
+public interface GamblingGame extends GameInterface {
 
     public void placeBet();
 

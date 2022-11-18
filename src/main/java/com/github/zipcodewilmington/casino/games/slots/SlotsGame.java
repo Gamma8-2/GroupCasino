@@ -45,8 +45,8 @@ public class SlotsGame implements GameInterface {
         String inputDecision="Y";
         do {
             int balance = _slotPlayer.get_slotPlayerBalance();
-            _slotPlayer.set_slotPlayerBalance(balance - 1);
-            generateMatrix();
+            _slotPlayer.set_slotPlayerBalance(balance - 1); //TODO DOES NOT WORK, DOES NOT SUBTRACT 1 DOLLAR
+            generateMatrix();                               //TODO SUBTRACTION HAPPENS ON LOSSES, NOT WINS
             StringBuilder sbRow = new StringBuilder();
             StringBuilder sbCol = new StringBuilder();
             StringBuilder sbDiag1 = new StringBuilder();
