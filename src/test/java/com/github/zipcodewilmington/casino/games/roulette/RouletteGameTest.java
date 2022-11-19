@@ -66,4 +66,41 @@ public class RouletteGameTest {
 
         Assert.assertEquals(expected, actual);
     }
+
+    @Test
+    public void getValidMenuChoiceTest(){
+        RouletteGame test = new RouletteGame();
+
+        int expected = 1;
+        int actual = test.getValidMenuChoice(expected);
+
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getValidMenuChoiceTest2(){
+        RouletteGame test = new RouletteGame();
+
+        int expected = 3;
+        int actual = test.getValidMenuChoice(expected);
+
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void displayCurrentBalanceTest(){
+        RouletteGame test = new RouletteGame();
+
+        int balance = 230;
+        String expected = "Your current balance is: 230";
+
+        String actual = test.displayCurrentBalance(balance);
+
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void addPlayerTest(){
+
+    }
 }
