@@ -1,8 +1,9 @@
 package com.github.zipcodewilmington.casino.games.roulette;
 
-import com.github.zipcodewilmington.casino.GameInterface;
 import com.github.zipcodewilmington.casino.PlayerInterface;
 import com.github.zipcodewilmington.casino.RandomGame;
+import com.github.zipcodewilmington.utils.AnsiColor;
+import com.github.zipcodewilmington.utils.IOConsole;
 
 import java.util.Scanner;
 
@@ -25,6 +26,7 @@ public class RouletteGame extends RandomGame {
     public void run() {
         boolean gameRun = true;
         Scanner scanner = new Scanner(System.in);
+        IOConsole console = new IOConsole(AnsiColor.BLUE);
         int balance = _roulettePlayer.get_roulettePlayerBalance();
         int playerNumberChoice = 0;
 //        System.out.println("PLACE: Before main while loop, TESTING: " +
@@ -45,14 +47,15 @@ public class RouletteGame extends RandomGame {
                 System.out.println("What number will you choose? Number choices are 0 to 36");
                 playerNumberChoice = scanner.nextInt();
             }
-            int betAmount = getBettingAmount();
+            int betAmount = getBettingAmount(balance);
             balance -= betAmount;
             System.out.println("Good luck!");
 
             balance = spinWheel(menuChoice, balance, betAmount, playerNumberChoice);
 
-            System.out.println("Play again? (y/n)");
-            String playAgainPlayerInput = scanner.nextLine();
+            //Switched from using Scanner to IO console, because at some point
+            //code refused to stop for scanner call and pushed through to the playAgain method
+            String playAgainPlayerInput = console.getStringInput("Play again? (y/n)");
             String lowerCasePlayAgainInput = playAgainPlayerInput.toLowerCase();
             boolean playAgainChoice = playAgain(lowerCasePlayAgainInput);
             if(playAgainChoice){
@@ -76,14 +79,14 @@ public class RouletteGame extends RandomGame {
                 playerBet *= 2;
                 int newBalance = playerBet + balance;
                 System.out.println("You win! A payout of: " + playerBet);
-                updateBalance(newBalance);
+                updateAccountBalance(newBalance);
                 String balanceUpdate = displayCurrentBalance(newBalance);
                 System.out.println(balanceUpdate);
                 return newBalance;
             }
             else{
                 System.out.println("An even number. You lose :(");
-                updateBalance(balance);
+                updateAccountBalance(balance);
                 String balanceUpdate = displayCurrentBalance(balance);
                 System.out.println(balanceUpdate);
                 return balance;
@@ -99,14 +102,14 @@ public class RouletteGame extends RandomGame {
                 playerBet *= 2;
                 int newBalance = balance + playerBet;
                 System.out.println("You win! A payout of: " + playerBet);
-                updateBalance(newBalance);
+                updateAccountBalance(newBalance);
                 String balanceUpdate = displayCurrentBalance(newBalance);
                 System.out.println(balanceUpdate);
                 return newBalance;
             }
             else{
                 System.out.println("An odd number. You lose :(");
-                updateBalance(balance);
+                updateAccountBalance(balance);
                 String balanceUpdate = displayCurrentBalance(balance);
                 System.out.println(balanceUpdate);
                 return balance;
@@ -123,14 +126,14 @@ public class RouletteGame extends RandomGame {
                 playerBet *= 10;
                 int newBalance = balance + playerBet;
                 System.out.println("You win! A payout of: " + playerBet);
-                updateBalance(newBalance);
+                updateAccountBalance(newBalance);
                 String balanceUpdate = displayCurrentBalance(newBalance);
                 System.out.println(balanceUpdate);
                 return newBalance;
             }
             else{
                 System.out.println("It didn't land on your number. You lose :(");
-                updateBalance(balance);
+                updateAccountBalance(balance);
                 String balanceUpdate = displayCurrentBalance(balance);
                 System.out.println(balanceUpdate);
                 return balance;
@@ -141,8 +144,7 @@ public class RouletteGame extends RandomGame {
         return balance;
     }
 
-    public boolean playAgain(String playAgainChoice){
-
+    public boolean playAgain(String playAgainChoice){ //Prompt player to play again
 
         if(!playAgainChoice.toLowerCase().equals("y") && !playAgainChoice.toLowerCase().equals("n")){
             System.out.println("Please make a valid choice");
@@ -154,27 +156,37 @@ public class RouletteGame extends RandomGame {
         else return true;
     }
 
-    public int getValidMenuChoice(int menuChoice){
-
+    public int getValidMenuChoice(int menuChoice){ //Validate menu choice, prompts for new input and runs again if invalid
+        Scanner scanner = new Scanner(System.in);
         if (menuChoice > 3 || menuChoice < 1) {
             System.out.println("Please enter a valid choice");
+            menuChoice = scanner.nextInt();
             getValidMenuChoice(menuChoice);
         }
         return menuChoice;
     }
 
-    public int getBettingAmount(){
+    public int getBettingAmount(int balance){
         Scanner scanner = new Scanner(System.in);
         System.out.println("How much would you like to bet?");
 
-        return scanner.nextInt();
+        int playerBet = scanner.nextInt();
+
+        if(playerBet > balance){
+            System.out.println("You don't have that much to bet with!");
+            getBettingAmount(balance);
+        }
+
+        return playerBet;
     }
 
-    public void updateBalance(int balance){
+    public void updateAccountBalance(int balance){
         //_roulettePlayer.set_roulettePlayerBalance(balance);
     }
 
     public String displayCurrentBalance(int balance){
         return "Your current balance is: " + balance;
     }
+
+
 }
