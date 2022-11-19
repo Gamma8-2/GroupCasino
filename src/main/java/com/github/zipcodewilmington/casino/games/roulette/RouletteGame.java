@@ -33,7 +33,14 @@ public class RouletteGame extends RandomGame {
         while(gameRun){
 //            System.out.println("Start of while loop, Balance number is: " + balance);
 
-            int menuChoice = getMenuChoice();
+            System.out.println("Place your bets! Higher risk, higher reward!\n" +
+                    "1. Odds (2-to-1 payout)\n" +
+                    "2. Evens (2-to-1 payout)\n" +
+                    "3. Number (10-to-1 payout)");
+            int menuChoice = scanner.nextInt(); //TODO EXCEPTION HANDLE BEFORE SENDING TO SPIN WHEEL MESSAGE
+            getValidMenuChoice(menuChoice);
+
+
             if(menuChoice == 3){
                 System.out.println("What number will you choose? Number choices are 0 to 36");
                 playerNumberChoice = scanner.nextInt();
@@ -57,6 +64,7 @@ public class RouletteGame extends RandomGame {
     }
 
     public int spinWheel(int menuChoice, int balance, int playerBet, int playerNumberChoice){
+
         int tableNumber = getRandomNumber(37);
 
 
@@ -69,13 +77,15 @@ public class RouletteGame extends RandomGame {
                 int newBalance = playerBet + balance;
                 System.out.println("You win! A payout of: " + playerBet);
                 updateBalance(newBalance);
-                displayCurrentBalance(newBalance);
+                String balanceUpdate = displayCurrentBalance(newBalance);
+                System.out.println(balanceUpdate);
                 return newBalance;
             }
             else{
                 System.out.println("An even number. You lose :(");
                 updateBalance(balance);
-                displayCurrentBalance(balance);
+                String balanceUpdate = displayCurrentBalance(balance);
+                System.out.println(balanceUpdate);
                 return balance;
             }
         }
@@ -90,19 +100,21 @@ public class RouletteGame extends RandomGame {
                 int newBalance = balance + playerBet;
                 System.out.println("You win! A payout of: " + playerBet);
                 updateBalance(newBalance);
-                displayCurrentBalance(newBalance);
+                String balanceUpdate = displayCurrentBalance(newBalance);
+                System.out.println(balanceUpdate);
                 return newBalance;
             }
             else{
                 System.out.println("An odd number. You lose :(");
                 updateBalance(balance);
-                displayCurrentBalance(balance);
+                String balanceUpdate = displayCurrentBalance(balance);
+                System.out.println(balanceUpdate);
                 return balance;
             }
         }
 
 
-        else if(menuChoice == 3){ //TODO BETTING ON SPEC NUM
+        else if(menuChoice == 3){ //TODO BETTING ON SPECIFIC NUMBER
 
         System.out.println("After rolling, the ball has landed on " + tableNumber);
 
@@ -112,13 +124,15 @@ public class RouletteGame extends RandomGame {
                 int newBalance = balance + playerBet;
                 System.out.println("You win! A payout of: " + playerBet);
                 updateBalance(newBalance);
-                displayCurrentBalance(newBalance);
+                String balanceUpdate = displayCurrentBalance(newBalance);
+                System.out.println(balanceUpdate);
                 return newBalance;
             }
             else{
                 System.out.println("It didn't land on your number. You lose :(");
                 updateBalance(balance);
-                displayCurrentBalance(balance);
+                String balanceUpdate = displayCurrentBalance(balance);
+                System.out.println(balanceUpdate);
                 return balance;
             }
 
@@ -140,16 +154,11 @@ public class RouletteGame extends RandomGame {
         else return true;
     }
 
-    public int getMenuChoice(){
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Place your bets! Higher risk, higher reward!\n" +
-                "1. Odds (2-to-1 payout)\n" +
-                "2. Evens (2-to-1 payout)\n" +
-                "3. Number (10-to-1 payout)");
-        int menuChoice = scanner.nextInt(); //TODO EXCEPTION HANDLE BEFORE SENDING TO SPIN WHEEL MESSAGE
+    public int getValidMenuChoice(int menuChoice){
+
         if (menuChoice > 3 || menuChoice < 1) {
             System.out.println("Please enter a valid choice");
-            getMenuChoice();
+            getValidMenuChoice(menuChoice);
         }
         return menuChoice;
     }
@@ -161,11 +170,11 @@ public class RouletteGame extends RandomGame {
         return scanner.nextInt();
     }
 
-    public void updateBalance(int balance){;
+    public void updateBalance(int balance){
         //_roulettePlayer.set_roulettePlayerBalance(balance);
     }
 
-    public void displayCurrentBalance(int balance){
-        System.out.println("Your current balance is: " + balance);
+    public String displayCurrentBalance(int balance){
+        return "Your current balance is: " + balance;
     }
 }
