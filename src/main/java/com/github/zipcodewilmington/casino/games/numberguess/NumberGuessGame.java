@@ -19,9 +19,11 @@ public class NumberGuessGame implements GameInterface {
     int count = 1;
     Integer guess;
 
+    boolean win = false;
+
     //Creating a mystery number
     Random random = new Random();
-    Integer mysteryNum = random.nextInt(100) + 1;
+  //  Integer mysteryNum = random.nextInt(100) + 1;
 
     @Override
     public void add(PlayerInterface player) {
@@ -37,40 +39,57 @@ public class NumberGuessGame implements GameInterface {
 
     @Override
     public void run() {
-        boolean gameStatus = false;
-       // String inputDecision="Y";
-        do{
+
+        String inputDecision="Y";
+
+
+        do {
+            boolean gameStatus = false;
             int balance = _numberGuessPlayer.get_numGuessPlayerBalance();
             _numberGuessPlayer.set_numGuessPlayerBalance(balance - 1);
+            count = 1;
+            win = false;
+            Integer mysteryNum = random.nextInt(100) + 1;
 
-            guess = console.getIntegerInput("Please select a number to guess mystery number between 1 and 100 in 4 attempts");
-            count++;
+                do {
 
-            gameStatus = guessNumberEngine(guess, mysteryNum, count);
+                    guess = console.getIntegerInput("Please select a number to guess mystery number between 1 and 100 in 4 attempts, your current account balance is " + balance);
+                    count++;
+                    balance = _numberGuessPlayer.get_numGuessPlayerBalance();
+                    gameStatus = guessNumberEngine(guess, mysteryNum, count, balance);
+
+                      // int balance = _numberGuessPlayer.get_numGuessPlayerBalance();
+                      if (gameStatus && win) {
+                          _numberGuessPlayer.set_numGuessPlayerBalance(balance + 10);
+                          int total = _numberGuessPlayer.get_numGuessPlayerBalance();
+                          System.out.println("Congratulations your find the mystery number in " + count + " attempts and your balance is " + total);
+                      }
 
 
-          //  inputDecision=console.getStringInput("Do you want to continule Y/N ?");
-        }while(!gameStatus );
+                   } while (!gameStatus);
+
+              inputDecision=console.getStringInput("Do you want to continue Y/N ?");
+
+        } while(inputDecision.equals("Y"));
+
+
         }
 
-    public boolean guessNumberEngine(Integer guessFromUser, Integer systemNum, int numAttempts) {
+    public boolean guessNumberEngine(Integer guessFromUser, Integer systemNum, int numAttempts, int curBalance) {
 
       // String inputDecision="Y";
 
       // do{
 
             if (guessFromUser == systemNum) {
-               // int total = _numberGuessPlayer.get_numGuessPlayerBalance();
-                // int balance = _numberGuessPlayer.get_numGuessPlayerBalance();
-               // _numberGuessPlayer.set_numGuessPlayerBalance(balance + 10);
-                System.out.println("Congratulations your find the mystery number in " + numAttempts + " attempts" );
+                win = true;
                 return true;
 
             } else if (guessFromUser > systemNum) {
                 System.out.println("your guess is bigger than mystery number");
                 //numAttempts++;
                 if (numAttempts > 4) {
-                    System.out.println("you exceeded the number of attempts");
+                    System.out.println("you exceeded the number of attempts and your balance is " + curBalance);
                     return true;
                 }
                 return false;
@@ -79,15 +98,13 @@ public class NumberGuessGame implements GameInterface {
                 //numAttempts++;
                 if (numAttempts > 4) {
 
-                    System.out.println("you exceeded the number of attempts" );
+                    System.out.println("you exceeded the number of attempts and your balance is " + curBalance);
                   //  inputDecision = console.getStringInput("Do you want to continue Y/N ?");
                     return true;
                 }
                 return false;
             }
 
-
-       // }while (inputDecision.equals("Y"));
 
     }
 
