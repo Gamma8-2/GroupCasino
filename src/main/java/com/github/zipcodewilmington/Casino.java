@@ -4,6 +4,8 @@ import com.github.zipcodewilmington.casino.CasinoAccount;
 import com.github.zipcodewilmington.casino.CasinoAccountManager;
 import com.github.zipcodewilmington.casino.GameInterface;
 import com.github.zipcodewilmington.casino.PlayerInterface;
+import com.github.zipcodewilmington.casino.games.YouAreOut.YouAreOutGame;
+import com.github.zipcodewilmington.casino.games.YouAreOut.YouAreOutPlayer;
 import com.github.zipcodewilmington.casino.games.numberguess.NumberGuessGame;
 import com.github.zipcodewilmington.casino.games.numberguess.NumberGuessPlayer;
 import com.github.zipcodewilmington.casino.games.roulette.RouletteGame;
