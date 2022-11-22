@@ -44,6 +44,8 @@ public class Casino implements Runnable {
                         play(new RouletteGame(), new RoulettePlayer());
                     } else if (gameSelectionInput.equals("WORDGUESS")) {
                         play(new WordGuessGame(), new WordGuessPlayer());
+                    } else if (gameSelectionInput.equals("YOU ARE OUT")){
+                        play(new YouAreOutGame(), new YouAreOutPlayer());
                     }
                     else {
                         // TODO - implement better exception handling
@@ -78,7 +80,7 @@ public class Casino implements Runnable {
         return console.getStringInput(new StringBuilder()
                 .append("Welcome to the Game Selection Dashboard!")
                 .append("\nFrom here, you can select any of the following options:")
-                .append("\n\t[ SLOTS ], [ NUMBERGUESS ], [ ROULETTE ], [ WORDGUESS ]")
+                .append("\n\t[ SLOTS ], [ NUMBERGUESS ], [ ROULETTE ], [ WORDGUESS ], [ YOU ARE OUT ]")
                 .toString());
     }
 
